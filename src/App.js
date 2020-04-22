@@ -23,6 +23,16 @@ class App extends Component {
     // console.log(this.state.counters[index]);
   };
 
+  handleDecrement = (counter) => {
+    //   console.log(counter);
+    const counters = [...this.state.counters];
+    const index = counters.indexOf(counter);
+    counters[index] = { ...counter };
+    counters[index].value--;
+    this.setState({ counters });
+    // console.log(this.state.counters[index]);
+  };
+
   handleReset = () => {
     // console.log("Event Delete Called",counterId);
     const counters = this.state.counters.map((c) => {
@@ -38,6 +48,10 @@ class App extends Component {
     this.setState({ counters });
   };
 
+  handleRestart = () => {
+    window.location.reload();
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -49,7 +63,9 @@ class App extends Component {
             counters={this.state.counters}
             onReset={this.handleReset}
             onIncrement={this.handleIncrement}
+            onDecrement={this.handleDecrement}
             onDelete={this.handleDelete}
+            onRestart={this.handleRestart}
           />
         </main>
       </React.Fragment>

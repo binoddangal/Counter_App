@@ -21,21 +21,32 @@ class Counter extends Component {
   //       this.handleIncrement({ id: 1});
   //   };
 
+  styles = {
+    fontSize: 20,
+    fontWeight: "bold"
+  };
+
   render() {
     return (
       <div>
-        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+        <span style = {this.styles} className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button
           onClick={() => this.props.onIncrement(this.props.counter)}
-          className="btn btn-secondary btn-sm"
+          className="btn btn-secondary btn-m m-2"
         >
-          Increment
+          <i className="fa fa-plus-circle" aria-hidden="true" />
+        </button>
+        <button
+          onClick={() => this.props.onDecrement(this.props.counter)}
+          className="btn btn-info btn-m"
+        >
+          <i className="fa fa-minus-circle" aria-hidden="true" />
         </button>
         <button
           onClick={() => this.props.onDelete(this.props.counter.id)}
-          className="btn btn-danger btn-sm m-2"
+          className="btn btn-danger btn-m m-2"
         >
-          Delete
+          <i className="fa fa-trash-o" aria-hidden="true" />
         </button>
       </div>
     );
